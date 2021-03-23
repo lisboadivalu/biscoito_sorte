@@ -10,7 +10,12 @@ class Botao extends Component {
     }
     
     quebraBiscoito(){
-        alert('QUEBROU');
+        //alert('QUEBROU');
+        let state = this.props.state;
+        let numeroAleatorio = Math.floor(Math.random() * this.props.frases.length);
+        state.numeroAleatorio = this.frases[numeroAleatorio];
+        this.setState(state);
+
     }
 
     render(){

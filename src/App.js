@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Botao from "./components/Botao";
 import "./estilo.css";
 
 class App extends Component {
@@ -8,6 +7,8 @@ class App extends Component {
     this.state = { 
       textoFrase: ''
     };
+
+    this.quebrarBiscoito = this.quebrarBiscoito.bind(this);
 
     this.frases = ['Siga os bons e aprenda com eles.', 
     'O bom-senso vale mais do que muito conhecimento.', 
@@ -18,17 +19,35 @@ class App extends Component {
     'A maior barreira para o sucesso é o medo do fracasso.']
   }
   
+  quebrarBiscoito(){    
+    let state = this.state;
+    let numeroAleatorio = Math.floor(Math.random() * this.frases.length );
+    state.textoFrase = this.frases[numeroAleatorio];
+    this.setState(state);
+  }
+
   render(){
     return(
       <div className="container">
         <img src={ require('./assets/biscoito.png').default } alt="Biscoito" className="img"/>
 
-        <Botao frases={this.state.frases} nome="Abrir Biscoito" texto={this.state.textoFrase} />
+        <Botao frases={this.state.frases} nome="Abrir Biscoito" acaoBtn={this.quebrarBiscoito}/>
         <h3 className="textoFrase">{this.state.textoFrase}</h3>
 
       </div>
     );
   }
 }
+
+class Botao extends Component {
+  render(){
+    return(
+      <div>
+        <button onClick={this.props.acaoBtn}>Quebrar Biscoito</button>
+      </div>
+    );
+  }
+}
+
 
 export default App;
