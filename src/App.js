@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-
-
+//import biscoito from "./assets/biscoito.png";
 
 class App extends Component {
   constructor(props){
@@ -13,7 +12,7 @@ class App extends Component {
   render(){
     return(
       <div>
-        <img src={ require('./assets/biscoito.png')} alt="Biscoito"/>
+        <img src={ require('./assets/biscoito.png').default } alt="Biscoito"/>
       </div>
     );
   }
